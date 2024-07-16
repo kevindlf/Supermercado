@@ -1,7 +1,7 @@
 package com.KevinDeLaFuente.supermercado.Controllers;
 
 import com.KevinDeLaFuente.supermercado.Models.Sucursal;
-import com.KevinDeLaFuente.supermercado.Service.sucursalService;
+import com.KevinDeLaFuente.supermercado.Service.SucursalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +13,10 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/sucursal")
-public class sucursalControllers {
+public class SucursalControllers {
 
     @Autowired
-    sucursalService sucursalservice;
+    SucursalService sucursalservice;
 
     @GetMapping
     public ResponseEntity<List<Sucursal>> getAllSucursales() {

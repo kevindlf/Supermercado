@@ -1,7 +1,7 @@
 package com.KevinDeLaFuente.supermercado.Service;
 
 import com.KevinDeLaFuente.supermercado.Models.Personal;
-import com.KevinDeLaFuente.supermercado.Repository.personalRepository;
+import com.KevinDeLaFuente.supermercado.Repository.PersonalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +10,9 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class personalService {
+public class PersonalService {
 
-    private final personalRepository personalrepository;
+    private final PersonalRepository personalrepository;
 
     public List<Personal> getAllPersonal() {
         return personalrepository.findAll();

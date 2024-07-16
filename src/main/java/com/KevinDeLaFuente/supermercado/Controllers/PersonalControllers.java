@@ -1,7 +1,7 @@
 package com.KevinDeLaFuente.supermercado.Controllers;
 
 import com.KevinDeLaFuente.supermercado.Models.Personal;
-import com.KevinDeLaFuente.supermercado.Service.personalService;
+import com.KevinDeLaFuente.supermercado.Service.PersonalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +12,8 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/personal")
-public class personalControllers {
-    private final personalService personalservice;
+public class PersonalControllers {
+    private final PersonalService personalservice;
 
     @GetMapping
     public ResponseEntity<List<Personal>> getAllPersonal() {

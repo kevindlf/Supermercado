@@ -1,7 +1,7 @@
 package com.KevinDeLaFuente.supermercado.Service;
 
 import com.KevinDeLaFuente.supermercado.Models.Sucursal;
-import com.KevinDeLaFuente.supermercado.Repository.sucursalRepository;
+import com.KevinDeLaFuente.supermercado.Repository.SucursalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class sucursalService {
+public class SucursalService {
 
     @Autowired
-    sucursalRepository sucursalrepository;
+    SucursalRepository sucursalrepository;
 
     public List<Sucursal> getAllSucursales() {
         return sucursalrepository.findAll();

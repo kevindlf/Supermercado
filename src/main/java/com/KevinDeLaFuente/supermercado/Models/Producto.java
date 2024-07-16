@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -34,5 +36,20 @@ public class Producto {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Sucursal sucursal;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+    @ManyToMany(mappedBy = "productos")
+    private List<Venta> ventas;
+
+    @ManyToMany
+    @JoinTable(
+            name = "producto_proveedor",
+            joinColumns = @JoinColumn(name = "producto_id"),
+            inverseJoinColumns = @JoinColumn(name = "proveedor_id")
+    )
+    private List<Proveedores> proveedores;
 
 }
