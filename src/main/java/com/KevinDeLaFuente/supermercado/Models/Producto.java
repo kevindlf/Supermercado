@@ -1,5 +1,7 @@
 package com.KevinDeLaFuente.supermercado.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,14 +37,18 @@ public class Producto {
     private String marca;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "sucursal_id")
+    @JsonIgnoreProperties("producto")  // Evita la serialización de la lista 'personal' dentro de 'Sucursal'
     private Sucursal sucursal;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoria_id")
+    @JsonIgnoreProperties("producto")
     private Categoria categoria;
 
-    @ManyToMany(mappedBy = "productos")
-    private List<Venta> ventas;
+    @ManyToMany(mappedBy = "producto")
+    @JsonIgnoreProperties("producto")
+    private List<Venta> venta;
 
     @ManyToMany
     @JoinTable(
@@ -50,6 +56,7 @@ public class Producto {
             joinColumns = @JoinColumn(name = "producto_id"),
             inverseJoinColumns = @JoinColumn(name = "proveedor_id")
     )
+    @JsonIgnoreProperties("producto")
     private List<Proveedores> proveedores;
 
 }

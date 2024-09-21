@@ -1,5 +1,7 @@
 package com.KevinDeLaFuente.supermercado.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,8 +25,9 @@ public class Venta {
     @Column(name = "fecha", nullable = false)
     private Date fecha;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id")
+    @JsonIgnoreProperties("venta")
     private Cliente cliente;
 
     @ManyToMany
@@ -33,5 +36,6 @@ public class Venta {
             joinColumns = @JoinColumn(name = "venta_id"),
             inverseJoinColumns = @JoinColumn(name = "producto_id")
     )
-    private List<Producto> productos;
+    @JsonIgnoreProperties("venta")
+    private List<Producto> producto;
 }

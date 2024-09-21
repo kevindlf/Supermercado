@@ -1,12 +1,16 @@
 package com.KevinDeLaFuente.supermercado.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,5 +30,6 @@ public class Proveedores {
     private String contacto;
 
     @ManyToMany(mappedBy = "proveedores")
-    private List<Producto> productos;
+    @JsonIgnoreProperties("proveedores")  // Evita la serialización de 'sucursal' dentro de 'Personal'
+    private Set<Producto> producto = new HashSet<>();
 }

@@ -1,47 +1,44 @@
 package com.KevinDeLaFuente.supermercado.Controllers;
-
 import com.KevinDeLaFuente.supermercado.Models.Personal;
 import com.KevinDeLaFuente.supermercado.Service.PersonalService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/personal")
 public class PersonalControllers {
-    private final PersonalService personalservice;
+    @Autowired
+    PersonalService personalService;
 
     @GetMapping
     public ResponseEntity<List<Personal>> getAllPersonal() {
-        List<Personal> personal = personalservice.getAllPersonal();
-        return ResponseEntity.ok(personal);
+        return ResponseEntity.ok(personalService.getAllPersonal());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Personal> getPersonalById(@PathVariable Long id) {
-        Optional<Personal> personal = personalservice.getPersonalById(id);
-        return personal.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return personalService.getPersonalById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Void> createPersonal(@RequestBody Personal personal) {
-        personalservice.savePersonal(personal);
-        return ResponseEntity.ok().build();
+    public Personal createPersonal(@RequestBody Personal personal) {
+        return personalService.createPersonal(personal);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Personal> updatePersonal(@PathVariable Long id, @RequestBody Personal personal) {
+        return ResponseEntity.ok(personalService.updatePersonal(id, personal));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePersonal(@PathVariable Long id) {
-        personalservice.deletePersonal(id);
+        personalService.deletePersonal(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> updatePersonal(@PathVariable Long id, @RequestBody Personal personal) {
-        personalservice.updatePersonal(id, personal);
-        return ResponseEntity.ok().build();
-    }
 }
