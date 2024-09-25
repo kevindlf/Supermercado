@@ -42,6 +42,8 @@ public class PersonalServiceImpl implements PersonalService {
                     existingPersonal.setNombre(personal.getNombre());
                     existingPersonal.setApellido(personal.getApellido());
                     existingPersonal.setEmail(personal.getEmail());
+
+                    existingPersonal.setSucursal(personal.getSucursal());
                     // Agrega cualquier otro campo que necesite ser actualizado
                     return personalRepository.save(existingPersonal);
                 })

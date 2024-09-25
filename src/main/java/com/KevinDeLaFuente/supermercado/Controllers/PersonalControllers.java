@@ -1,4 +1,5 @@
 package com.KevinDeLaFuente.supermercado.Controllers;
+
 import com.KevinDeLaFuente.supermercado.Models.Personal;
 import com.KevinDeLaFuente.supermercado.Service.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;

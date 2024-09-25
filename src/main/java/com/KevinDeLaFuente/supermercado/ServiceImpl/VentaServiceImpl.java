@@ -38,10 +38,12 @@ public class VentaServiceImpl implements VentaService {
     @Override
     public Venta updateVenta(Long id, Venta venta) {
         return ventaRepository.findById(id)
-                .map(existingCategoria -> {
-                    existingCategoria.setFecha(venta.getFecha());
+                .map(existingVenta -> {
+                    existingVenta.setFecha(venta.getFecha());
+
+                    existingVenta.setCliente(venta.getCliente());
                     // Agrega cualquier otro campo que necesite ser actualizado
-                    return ventaRepository.save(existingCategoria);
+                    return ventaRepository.save(existingVenta);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("Categoria not found"));
     }

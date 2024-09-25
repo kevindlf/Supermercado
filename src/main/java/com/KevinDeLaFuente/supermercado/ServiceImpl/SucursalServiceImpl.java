@@ -1,9 +1,7 @@
 package com.KevinDeLaFuente.supermercado.ServiceImpl;
 
 import com.KevinDeLaFuente.supermercado.Exceptions.ResourceNotFoundException;
-import com.KevinDeLaFuente.supermercado.Models.Categoria;
 import com.KevinDeLaFuente.supermercado.Models.Sucursal;
-import com.KevinDeLaFuente.supermercado.Repository.CategoriaRepository;
 import com.KevinDeLaFuente.supermercado.Repository.SucursalRepository;
 import com.KevinDeLaFuente.supermercado.Service.SucursalService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package com.KevinDeLaFuente.supermercado.Models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -34,6 +32,6 @@ public class Cliente {
     private String email;
 
     @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("cliente")  // Evita la serialización de 'sucursal' dentro de 'Personal'
+    @JsonIgnoreProperties("cliente")  // Evita la serialización de 'cliente' dentro de 'venta'
     private Set<Venta> venta = new HashSet<>();
 }

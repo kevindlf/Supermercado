@@ -1,6 +1,5 @@
 package com.KevinDeLaFuente.supermercado.Models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -38,7 +37,7 @@ public class Producto {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sucursal_id")
-    @JsonIgnoreProperties("producto")  // Evita la serialización de la lista 'personal' dentro de 'Sucursal'
+    @JsonIgnoreProperties("producto")  // Evita la serialización de la lista 'producto' dentro de 'Sucursal'
     private Sucursal sucursal;
 
     @ManyToOne(fetch = FetchType.EAGER)

@@ -1,6 +1,5 @@
 package com.KevinDeLaFuente.supermercado.Models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,6 +35,6 @@ public class Sucursal {
     private Set<Personal> personal = new HashSet<>();
 
     @OneToMany(mappedBy = "sucursal", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("sucursal")  // Evita la serialización de 'sucursal' dentro de 'Personal'
+    @JsonIgnoreProperties("sucursal")  // Evita la serialización de 'sucursal' dentro de 'producto'
     private Set<Producto> producto = new HashSet<>();
 }

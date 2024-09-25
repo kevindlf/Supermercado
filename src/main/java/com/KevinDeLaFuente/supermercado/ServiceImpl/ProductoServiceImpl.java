@@ -44,6 +44,9 @@ public class ProductoServiceImpl implements ProductoService {
                         existingProducto.setFechaElaboracion(producto.getFechaElaboracion());
                         existingProducto.setVencimiento(producto.getVencimiento());
                         existingProducto.setMarca(producto.getMarca());
+
+                        existingProducto.setCategoria(producto.getCategoria());
+                        existingProducto.setSucursal(producto.getSucursal());
                         // Agrega cualquier otro campo que necesite ser actualizado
                         return productoRepository.save(existingProducto);
                     })
